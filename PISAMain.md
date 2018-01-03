@@ -8,7 +8,7 @@
 
 300000 Success
 
-400000. Transaction Success (Hold 2 ticks)
+400000 Transaction Success (Hold 2 ticks)
     400001 Gate Opened
     400002 Contactless Opened
     400003 Query Success
