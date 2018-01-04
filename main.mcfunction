@@ -8,6 +8,12 @@ scoreboard players remove @a[score_PISA4Timer_min=1] PISA4Timer 1
 
 #/# Timer #/#
 
+# Allow Transactions
+
+scoreboard players enable @a[score_PISA4Bal_min=1] PISA4Tx
+
+#/# Allow Transactions #/#
+
 
 # 0 Initiate Transaction
 
