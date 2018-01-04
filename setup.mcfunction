@@ -3,7 +3,7 @@ scoreboard objectives add PISA4Tx trigger [PISA4] Transaction Amount
 
 # PISA4State - Status Code
 # See status_codes.md for more information
-scoreboard objectives add PISA4Tx dummy [PISA4] Status Code
+scoreboard objectives add PISA4State dummy [PISA4] Status Code
 
 # PISA4Mode - Request Mode
 # See status_codes.md for more information
