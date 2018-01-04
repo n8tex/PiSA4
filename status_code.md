@@ -1,4 +1,4 @@
-### PISA4State
+### State
 
 #### 0 Initialization
 ##### 1 Positive Transaction
@@ -45,3 +45,9 @@ Prepare for coupon return if using coupons
 
 #### 800000 Cleanup
 Reset all variable (Tx,Mode,State,T1) used to 0
+
+
+### Mode
+#### 1 Card
+#### 2 Coupon
+#### 10 Query
