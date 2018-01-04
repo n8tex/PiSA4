@@ -48,7 +48,7 @@ scoreboard players operation @a[score_PISA4State=100000,score_PISA4State_min=100
 
 #### Get Total Coupon Count -> T1
 stats entity @a[score_PISA4State=100000,score_PISA4State_min=100000,score_PISA4Mode=1,score_PISA4Mode_min=1] set AffectedItems @p PISA4T1
-execute @a[score_PISA4State=100000,score_PISA4State_min=100000,score_PISA4Mode=1,score_PISA4Mode_min=1] ~ ~ ~ minecraft:clear @p[score_PISA4State=100000,score_PISA4State_min=100000,score_PISA4Mode=1,score_PISA4Mode_min=1 redstone_block
+execute @a[score_PISA4State=100000,score_PISA4State_min=100000,score_PISA4Mode=1,score_PISA4Mode_min=1] ~ ~ ~ minecraft:clear @p[score_PISA4State=100000,score_PISA4State_min=100000,score_PISA4Mode=1,score_PISA4Mode_min=1] redstone_block
 stats entity @a[score_PISA4State=100000,score_PISA4State_min=100000,score_PISA4Mode=1,score_PISA4Mode_min=1] clear AffectedItems
 
 ### Query [10]
@@ -66,10 +66,15 @@ scoreboard players operation @a[score_PISA4State=200000,score_PISA4State_min=200
 ## Proceed to next step - Transaction Approval
 
 ### Approved 300000
-scoreboard players set @a[score_PISA4State=200000,score_PISA4State_min=200000,score_PISA4T1_min=0] PISA4State 300000
 
-### Query Success 400030
-scoreboard players set @a[score_PISA4State=300000,score_PISA4State_min=300000,score_PISA4Mode=10,score_PISA4Mode_min=10] PISA4State 400030
+#### 300001 All (Contactless and Gates) - Card [0]
+scoreboard players set @a[score_PISA4State=200000,score_PISA4State_min=200000,score_PISA4Mode=0,score_PISA4Mode_min=0,score_PISA4T1_min=0] PISA4State 300001
+
+#### 300002 Gates Only - Coupon [1]
+scoreboard players set @a[score_PISA4State=200000,score_PISA4State_min=200000,score_PISA4Mode=1,score_PISA4Mode_min=1,score_PISA4T1_min=0] PISA4State 300002
+
+#### 300011 Query Success - Query [10]
+scoreboard players set @a[score_PISA4State=200000,score_PISA4State_min=200000,score_PISA4Mode=10,score_PISA4Mode_min=10,score_PISA4T1_min=0] PISA4State 300011
 
 ### Rejected 500002
 scoreboard players set @a[score_PISA4State=200000,score_PISA4State_min=200000,score_PISA4T1=-1] PISA4State 500002
@@ -80,43 +85,44 @@ scoreboard players set @a[score_PISA4State=200000,score_PISA4State_min=200000,sc
 # 300000 Success
 
 ## Set Timer 31 ms
-scoreboard players set @a[score_PISA4State=300000,score_PISA4State_min=300000,score_PISA4Timer=0,score_PISA4Timer_min=0] PISA4Timer 31
-scoreboard players set @a[score_PISA4State=300000,score_PISA4State_min=300000,score_PISA4Timer_min=32] PISA4Timer 31
+scoreboard players set @a[score_PISA4State=399999,score_PISA4State_min=300000,score_PISA4Timer=0,score_PISA4Timer_min=0] PISA4Timer 31
+scoreboard players set @a[score_PISA4State=399999,score_PISA4State_min=300000,score_PISA4Timer_min=32] PISA4Timer 31
 
 ## Client reception
 
 ### Gate [All requests]
 
 #### Open gates
-execute @a[score_PISA4State=300000,score_PISA4State_min=300000] ~ ~ ~ detect ~ ~-2 ~ lapis_ore -1 execute @a[score_PISA4State=300000,score_PISA4State_min=300000] ~ ~ ~ detect ~ ~ ~-1 fence -1 setblock ~ ~ ~-1 fence_gate 6
-execute @a[score_PISA4State=300000,score_PISA4State_min=300000] ~ ~ ~ detect ~ ~-2 ~ lapis_ore -1 execute @a[score_PISA4State=300000,score_PISA4State_min=300000] ~ ~ ~ detect ~1 ~ ~ fence -1 setblock ~1 ~ ~ fence_gate 7
-execute @a[score_PISA4State=300000,score_PISA4State_min=300000] ~ ~ ~ detect ~ ~-2 ~ lapis_ore -1 execute @a[score_PISA4State=300000,score_PISA4State_min=300000] ~ ~ ~ detect ~ ~ ~1 fence -1 setblock ~ ~ ~1 fence_gate 4
-execute @a[score_PISA4State=300000,score_PISA4State_min=300000] ~ ~ ~ detect ~ ~-2 ~ lapis_ore -1 execute @a[score_PISA4State=300000,score_PISA4State_min=300000] ~ ~ ~ detect ~-1 ~ ~ fence -1 setblock ~-1 ~ ~ fence_gate 5
+execute @a[score_PISA4State=300002,score_PISA4State_min=300000] ~ ~ ~ detect ~ ~-2 ~ lapis_ore -1 execute @a[score_PISA4State=300002,score_PISA4State_min=300000] ~ ~ ~ detect ~ ~ ~-1 fence -1 setblock ~ ~ ~-1 fence_gate 6
+execute @a[score_PISA4State=300002,score_PISA4State_min=300000] ~ ~ ~ detect ~ ~-2 ~ lapis_ore -1 execute @a[score_PISA4State=300002,score_PISA4State_min=300000] ~ ~ ~ detect ~1 ~ ~ fence -1 setblock ~1 ~ ~ fence_gate 7
+execute @a[score_PISA4State=300002,score_PISA4State_min=300000] ~ ~ ~ detect ~ ~-2 ~ lapis_ore -1 execute @a[score_PISA4State=300002,score_PISA4State_min=300000] ~ ~ ~ detect ~ ~ ~1 fence -1 setblock ~ ~ ~1 fence_gate 4
+execute @a[score_PISA4State=300002,score_PISA4State_min=300000] ~ ~ ~ detect ~ ~-2 ~ lapis_ore -1 execute @a[score_PISA4State=300002,score_PISA4State_min=300000] ~ ~ ~ detect ~-1 ~ ~ fence -1 setblock ~-1 ~ ~ fence_gate 5
 
 #### Proceed to next step
-execute @a[score_PISA4State=300000,score_PISA4State_min=300000] ~ ~ ~ detect ~ ~-2 ~ lapis_ore -1 execute @a[score_PISA4State=300000,score_PISA4State_min=300000] ~ ~ ~ detect ~ ~ ~-1 fence_gate 6 scoreboard players set @a[score_PISA4State=300000,score_PISA4State_min=300000] PISA4State 400011
-execute @a[score_PISA4State=300000,score_PISA4State_min=300000] ~ ~ ~ detect ~ ~-2 ~ lapis_ore -1 execute @a[score_PISA4State=300000,score_PISA4State_min=300000] ~ ~ ~ detect ~1 ~ ~ fence_gate 7 scoreboard players set @a[score_PISA4State=300000,score_PISA4State_min=300000] PISA4State 400012
-execute @a[score_PISA4State=300000,score_PISA4State_min=300000] ~ ~ ~ detect ~ ~-2 ~ lapis_ore -1 execute @a[score_PISA4State=300000,score_PISA4State_min=300000] ~ ~ ~ detect ~ ~ ~1 fence_gate 4 scoreboard players set @a[score_PISA4State=300000,score_PISA4State_min=300000] PISA4State 400013
-execute @a[score_PISA4State=300000,score_PISA4State_min=300000] ~ ~ ~ detect ~ ~-2 ~ lapis_ore -1 execute @a[score_PISA4State=300000,score_PISA4State_min=300000] ~ ~ ~ detect ~-1 ~ ~ fence_gate 5 scoreboard players set @a[score_PISA4State=300000,score_PISA4State_min=300000] PISA4State 400014
+execute @a[score_PISA4State=300002,score_PISA4State_min=300000] ~ ~ ~ detect ~ ~-2 ~ lapis_ore -1 execute @a[score_PISA4State=300002,score_PISA4State_min=300000] ~ ~ ~ detect ~ ~ ~-1 fence_gate 6 scoreboard players set @a[score_PISA4State=300002,score_PISA4State_min=300000] PISA4State 400011
+execute @a[score_PISA4State=300002,score_PISA4State_min=300000] ~ ~ ~ detect ~ ~-2 ~ lapis_ore -1 execute @a[score_PISA4State=300002,score_PISA4State_min=300000] ~ ~ ~ detect ~1 ~ ~ fence_gate 7 scoreboard players set @a[score_PISA4State=300002,score_PISA4State_min=300000] PISA4State 400012
+execute @a[score_PISA4State=300002,score_PISA4State_min=300000] ~ ~ ~ detect ~ ~-2 ~ lapis_ore -1 execute @a[score_PISA4State=300002,score_PISA4State_min=300000] ~ ~ ~ detect ~ ~ ~1 fence_gate 4 scoreboard players set @a[score_PISA4State=300002,score_PISA4State_min=300000] PISA4State 400013
+execute @a[score_PISA4State=300002,score_PISA4State_min=300000] ~ ~ ~ detect ~ ~-2 ~ lapis_ore -1 execute @a[score_PISA4State=300002,score_PISA4State_min=300000] ~ ~ ~ detect ~-1 ~ ~ fence_gate 5 scoreboard players set @a[score_PISA4State=300002,score_PISA4State_min=300000] PISA4State 400014
 
 ### Contactless [0] ONLY
 
 #### Activate
-execute @a[score_PISA4State=300000,score_PISA4State_min=300000,score_PISA4Mode=0,score_PISA4Mode_min=0] ~ ~ ~ detect ~ ~ ~-1 lapis_ore -1 setblock ~ ~ ~-1 redstone_block
-execute @a[score_PISA4State=300000,score_PISA4State_min=300000,score_PISA4Mode=0,score_PISA4Mode_min=0] ~ ~ ~ detect ~1 ~ ~ lapis_ore -1 setblock ~1 ~ ~ redstone_block
-execute @a[score_PISA4State=300000,score_PISA4State_min=300000,score_PISA4Mode=0,score_PISA4Mode_min=0] ~ ~ ~ detect ~ ~ ~1 lapis_ore -1 setblock ~ ~ ~1 redstone_block
-execute @a[score_PISA4State=300000,score_PISA4State_min=300000,score_PISA4Mode=0,score_PISA4Mode_min=0] ~ ~ ~ detect ~-1 ~ ~ lapis_ore -1 setblock ~-1 ~ ~ redstone_block
+execute @a[score_PISA4State=300001,score_PISA4State_min=300000] ~ ~ ~ detect ~ ~ ~-1 lapis_ore -1 setblock ~ ~ ~-1 redstone_block
+execute @a[score_PISA4State=300001,score_PISA4State_min=300000] ~ ~ ~ detect ~1 ~ ~ lapis_ore -1 setblock ~1 ~ ~ redstone_block
+execute @a[score_PISA4State=300001,score_PISA4State_min=300000] ~ ~ ~ detect ~ ~ ~1 lapis_ore -1 setblock ~ ~ ~1 redstone_block
+execute @a[score_PISA4State=300001,score_PISA4State_min=300000] ~ ~ ~ detect ~-1 ~ ~ lapis_ore -1 setblock ~-1 ~ ~ redstone_block
 
 ## Proceed to next step
-execute @a[score_PISA4State=300000,score_PISA4State_min=300000,score_PISA4Mode=0,score_PISA4Mode_min=0] ~ ~ ~ detect ~ ~ ~-1 redstone_block -1 scoreboard players set @a[score_PISA4State=300000,score_PISA4State_min=300000,score_PISA4Mode=0,score_PISA4Mode_min=0] PISA4State 400021
-execute @a[score_PISA4State=300000,score_PISA4State_min=300000,score_PISA4Mode=0,score_PISA4Mode_min=0] ~ ~ ~ detect ~1 ~ ~ redstone_block -1 scoreboard players set @a[score_PISA4State=300000,score_PISA4State_min=300000,score_PISA4Mode=0,score_PISA4Mode_min=0] PISA4State 400022
-execute @a[score_PISA4State=300000,score_PISA4State_min=300000,score_PISA4Mode=0,score_PISA4Mode_min=0] ~ ~ ~ detect ~ ~ ~1 redstone_block -1 scoreboard players set @a[score_PISA4State=300000,score_PISA4State_min=300000,score_PISA4Mode=0,score_PISA4Mode_min=0] PISA4State 400023
-execute @a[score_PISA4State=300000,score_PISA4State_min=300000,score_PISA4Mode=0,score_PISA4Mode_min=0] ~ ~ ~ detect ~-1 ~ ~ redstone_block -1 scoreboard players set @a[score_PISA4State=300000,score_PISA4State_min=300000,score_PISA4Mode=0,score_PISA4Mode_min=0] PISA4State 400024
+execute @a[score_PISA4State=300001,score_PISA4State_min=300000] ~ ~ ~ detect ~ ~ ~-1 redstone_block -1 scoreboard players set @a[score_PISA4State=300001,score_PISA4State_min=300000] PISA4State 400021
+execute @a[score_PISA4State=300001,score_PISA4State_min=300000] ~ ~ ~ detect ~1 ~ ~ redstone_block -1 scoreboard players set @a[score_PISA4State=300001,score_PISA4State_min=300000] PISA4State 400022
+execute @a[score_PISA4State=300001,score_PISA4State_min=300000] ~ ~ ~ detect ~ ~ ~1 redstone_block -1 scoreboard players set @a[score_PISA4State=300001,score_PISA4State_min=300000] PISA4State 400023
+execute @a[score_PISA4State=300001,score_PISA4State_min=300000] ~ ~ ~ detect ~-1 ~ ~ redstone_block -1 scoreboard players set @a[score_PISA4State=300001,score_PISA4State_min=300000] PISA4State 400024
 
-## TODO: Query Accepted
+### Query Accepted - 400030
+scoreboard players set @a[score_PISA4State=300011,score_PISA4State_min=300011] PISA4State 400030 
 
 ## Timeout
-scoreboard players set @a[score_PISA4State=300000,score_PISA4State_min=300000,score_PISA4Timer=1,score_PISA4Timer_min=1] PISA4State 500001
+scoreboard players set @a[score_PISA4State=399999,score_PISA4State_min=300000,score_PISA4Timer=1,score_PISA4Timer_min=1] PISA4State 500001
 
 #/# 300000 Success #/#
 
@@ -157,14 +163,14 @@ scoreboard players set @a[score_PISA4State=600000,score_PISA4State_min=600000,sc
 give @a[score_PISA4State=600000,score_PISA4State_min=600000,score_PISA4Mode=1,score_PISA4Mode_min=1,score_PISA4T1_min=1000] redstone_block 1000
 scoreboard players remove @a[score_PISA4State=600000,score_PISA4State_min=600000,score_PISA4Mode=1,score_PISA4Mode_min=1,score_PISA4T1_min=1000] PISA4T1 1000
 
-give @a[score_PISA4State=600000,score_PISA4State_min=600000,score_PISA4Mode=1,score_PISA4Mode_min=1,score_PISA4T1_min=100] redstone_block 100
-scoreboard players remove @a[score_PISA4State=600000,score_PISA4State_min=600000,score_PISA4Mode=1,score_PISA4Mode_min=1,score_PISA4T1_min=100] PISA4T1 100
+give @a[score_PISA4State=600000,score_PISA4State_min=600000,score_PISA4Mode=1,score_PISA4Mode_min=1,score_PISA4T1=999,score_PISA4T1_min=100] redstone_block 100
+scoreboard players remove @a[score_PISA4State=600000,score_PISA4State_min=600000,score_PISA4Mode=1,score_PISA4Mode_min=1,score_PISA4T1=999,score_PISA4T1_min=100] PISA4T1 100
 
-give @a[score_PISA4State=600000,score_PISA4State_min=600000,score_PISA4Mode=1,score_PISA4Mode_min=1,score_PISA4T1_min=10] redstone_block 10
-scoreboard players remove @a[score_PISA4State=600000,score_PISA4State_min=600000,score_PISA4Mode=1,score_PISA4Mode_min=1,score_PISA4T1_min=10] PISA4T1 10
+give @a[score_PISA4State=600000,score_PISA4State_min=600000,score_PISA4Mode=1,score_PISA4Mode_min=1,score_PISA4T1=99,score_PISA4T1_min=10] redstone_block 10
+scoreboard players remove @a[score_PISA4State=600000,score_PISA4State_min=600000,score_PISA4Mode=1,score_PISA4Mode_min=1,score_PISA4T1=99,score_PISA4T1_min=10] PISA4T1 10
 
-give @a[score_PISA4State=600000,score_PISA4State_min=600000,score_PISA4Mode=1,score_PISA4Mode_min=1,score_PISA4T1_min=1] redstone_block 1
-scoreboard players remove @a[score_PISA4State=600000,score_PISA4State_min=600000,score_PISA4Mode=1,score_PISA4Mode_min=1,score_PISA4T1_min=1] PISA4T1 1
+give @a[score_PISA4State=600000,score_PISA4State_min=600000,score_PISA4Mode=1,score_PISA4Mode_min=1,score_PISA4T1=9,score_PISA4T1_min=1] redstone_block 1
+scoreboard players remove @a[score_PISA4State=600000,score_PISA4State_min=600000,score_PISA4Mode=1,score_PISA4Mode_min=1,score_PISA4T1=9,score_PISA4T1_min=1] PISA4T1 1
 
 ## Query
 scoreboard players set @a[score_PISA4State=600000,score_PISA4State_min=600000,score_PISA4Mode=10,score_PISA4Mode_min=10] PISA4T1 0

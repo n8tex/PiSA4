@@ -15,6 +15,9 @@ Deducts transaction volume from T2
 Transaction is approved by server - awaiting client confirmation
 
 Status is held for 30 ms
+##### 300001 Card - All Contraptions Available
+##### 300002 Coupon - Gates Only
+##### 300011 Query Approved - No Contraptions
 
 #### 400000 Transaction Completed
 Status is held for 2 ms
