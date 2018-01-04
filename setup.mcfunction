@@ -7,7 +7,7 @@ scoreboard objectives add PISA4State dummy [PISA4] Status Code
 
 # PISA4Mode - Request Mode
 # See status_codes.md for more information
-scoreboard objectives add PISA4Mode dummy [PISA4] Transaction Mode
+scoreboard objectives add PISA4Mode trigger [PISA4] Transaction Mode
 
 # PISA4Bal - Card Balance
 scoreboard objectives add PISA4Bal dummy [PISA4] Card Balance

@@ -10,10 +10,15 @@ scoreboard players remove @a[score_PISA4Timer_min=1] PISA4Timer 1
 
 # Allow Transactions
 
-scoreboard players enable @a[score_PISA4Bal_min=1] PISA4Tx
+scoreboard players enable @a[score_PISA4State=0,score_PISA4State_min=0] PISA4Tx
 
 #/# Allow Transactions #/#
 
+# Allow Selection of Transaction Mode
+
+scoreboard players enable @a[score_PISA4State=0,score_PISA4State_min=0] PISA4Mode
+
+#/# Allow Transactions #/#
 
 # 0 Initiate Transaction
 
@@ -42,11 +47,11 @@ scoreboard players operation @a[score_PISA4State=100000,score_PISA4State_min=100
 ### Coupon [1]
 
 #### Get Total Coupon Count -> T1
-stats entity @a[score_PISA4State=100000,score_PISA4State_min=100000,score_PISA4Mode=1,score_PISA4Mode_min=1,score_PISA4T1=0,score_PISA4T1_min=0] clear AffectedItems
-clear @a[score_PISA4State=100000,score_PISA4State_min=100000,score_PISA4Mode=1,score_PISA4Mode_min=1,score_PISA4T1=0,score_PISA4T1_min=0] redstone_block
-stats entity @a[score_PISA4State=100000,score_PISA4State_min=100000,score_PISA4Mode=1,score_PISA4Mode_min=1,score_PISA4T1=0,score_PISA4T1_min=0] set AffectedItems PISA4T1
+stats entity @a[score_PISA4State=100000,score_PISA4State_min=100000,score_PISA4Mode=1,score_PISA4Mode_min=1] set AffectedItems @p PISA4T1
+execute @a[score_PISA4State=100000,score_PISA4State_min=100000,score_PISA4Mode=1,score_PISA4Mode_min=1] ~ ~ ~ minecraft:clear @p[score_PISA4State=100000,score_PISA4State_min=100000,score_PISA4Mode=1,score_PISA4Mode_min=1 redstone_block
+stats entity @a[score_PISA4State=100000,score_PISA4State_min=100000,score_PISA4Mode=1,score_PISA4Mode_min=1] clear AffectedItems
 
-### Query [2]
+### Query [10]
 scoreboard players operation @a[score_PISA4State=100000,score_PISA4State_min=100000,score_PISA4Mode=10,score_PISA4Mode_min=10] PISA4T1 = @a[score_PISA4State=100000,score_PISA4State_min=100000,score_PISA4Mode=10,score_PISA4Mode_min=10] PISA4Bal
 
 ## Proceed to next step
@@ -142,11 +147,11 @@ scoreboard players set @a[score_PISA4State=599999,score_PISA4State_min=500000,sc
 
 # 600000 Initiate Payment
 
-## Card
+## Card [0]
 scoreboard players operation @a[score_PISA4State=600000,score_PISA4State_min=600000,score_PISA4Mode=0,score_PISA4Mode_min=0] PISA4Bal = @a[score_PISA4State=600000,score_PISA4State_min=600000,score_PISA4Mode=0,score_PISA4Mode_min=0] PISA4T1
 scoreboard players set @a[score_PISA4State=600000,score_PISA4State_min=600000,score_PISA4Mode=0,score_PISA4Mode_min=0] PISA4T1 0
 
-## Coupon
+## Coupon [1]
 
 ### Change
 give @a[score_PISA4State=600000,score_PISA4State_min=600000,score_PISA4Mode=1,score_PISA4Mode_min=1,score_PISA4T1_min=1000] redstone_block 1000
@@ -180,7 +185,7 @@ scoreboard players set @a[score_PISA4State=700000,score_PISA4State_min=700000,sc
 ## Coupon [1] (Use change to return tickets)
 
 ### Get original value
-scoreboard players operation @a[score_PISA4State=700000,score_PISA4State_min=700000,score_PISA4Mode=1,score_PISA4Mode_min=1] PISAT1 += @a[score_PISA4State=700000,score_PISA4State_min=700000,score_PISA4Mode=1,score_PISA4Mode_min=1] PISA4Tx
+scoreboard players operation @a[score_PISA4State=700000,score_PISA4State_min=700000,score_PISA4Mode=1,score_PISA4Mode_min=1] PISA4T1 += @a[score_PISA4State=700000,score_PISA4State_min=700000,score_PISA4Mode=1,score_PISA4Mode_min=1] PISA4Tx
 
 ### Proceed to next step
 scoreboard players set @a[score_PISA4State=700000,score_PISA4State_min=700000,score_PISA4Mode=1,score_PISA4Mode_min=1] PISA4State 600000
