@@ -20,7 +20,7 @@ Status is held for 30 ms
 ##### 300011 Query Approved - No Contraptions
 
 #### 400000 Transaction Completed
-Status is held for 2 ms
+Status is held for 3 ms
 ##### 400010 Gate Opened
 ###### 400011 North
 ###### 400012 East
@@ -34,7 +34,7 @@ Status is held for 2 ms
 ##### 400030 Query Success
 
 #### 500000 Transaction Failed / Rejected
-Status is held for 2 ms
+Status is held for 3 ms
 ##### 500001 Timeout
 ##### 500002 Not enough balance
 
@@ -54,3 +54,4 @@ Reset all variable (Tx,Mode,State,T1) used to 0
 #### 1 Card
 #### 2 Coupon
 #### 10 Query
+#### 20 Staff Pass
