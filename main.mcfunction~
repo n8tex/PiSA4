@@ -41,7 +41,7 @@ clear @a[score_PISA4State=100000,score_PISA4State_min=100000,score_PISA4Mode=1,s
 stats entity @a[score_PISA4State=100000,score_PISA4State_min=100000,score_PISA4Mode=1,score_PISA4Mode_min=1,score_PISA4T1=0,score_PISA4T1_min=0] set AffectedItems PISA4T1
 
 ### Query [2]
-scoreboard players operation @a[score_PISA4State=100000,score_PISA4State_min=100000,score_PISA4Mode=10,score_PISA4Mode_min=10] PISA4T1 = @a[score_PISA4State=100000,score_PISA4State_min=100000,score_PISA4Mode=10,score_PISA4Mode_min=10] PISA4Bal
+scoreboard players operation @a[score_PISA4State=100000,score_PISA4State_min=100000,score_PISA4Mode=2,score_PISA4Mode_min=2] PISA4T1 = @a[score_PISA4State=100000,score_PISA4State_min=100000,score_PISA4Mode=2,score_PISA4Mode_min=2] PISA4Bal
 
 ## Proceed to next step
 scoreboard players set @a[score_PISA4State=100000,score_PISA4State_min=100000] PISA4State 200000
@@ -156,7 +156,7 @@ give @a[score_PISA4State=600000,score_PISA4State_min=600000,score_PISA4Mode=1,sc
 scoreboard players remove @a[score_PISA4State=600000,score_PISA4State_min=600000,score_PISA4Mode=1,score_PISA4Mode_min=1,score_PISA4T1_min=1] PISA4T1 1
 
 ## Query
-scoreboard players set @a[score_PISA4State=600000,score_PISA4State_min=600000,score_PISA4Mode=10,score_PISA4Mode_min=10] PISA4T1 0
+scoreboard players set @a[score_PISA4State=600000,score_PISA4State_min=600000,score_PISA4Mode=2,score_PISA4Mode_min=2] PISA4T1 0
 
 ## Proceed to next step
 scoreboard players set @a[score_PISA4State=600000,score_PISA4State_min=600000,score_PISA4T1=0,score_PISA4T1_min=0] PISA4State 800000
